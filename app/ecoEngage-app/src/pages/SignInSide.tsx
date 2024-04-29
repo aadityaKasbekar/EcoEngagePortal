@@ -192,7 +192,7 @@ const SignInSide: React.FC = () => {
               {/* Links for forgot password and sign up */}
               <Grid container>
                 <Grid item xs>
-                  <Link to={`/resetPassword`}>{t("forgotPassword")}</Link>
+                  <Link to={`/changePassword`}>{t("forgotPassword")}</Link>
                 </Grid>
                 <Grid item>
                   <Link to={`/signUp`}>{t("dontHaveAccount")}</Link>

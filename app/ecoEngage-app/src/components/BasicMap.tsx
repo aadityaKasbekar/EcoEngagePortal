@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 import * as maptilersdk from "@maptiler/sdk";
 import "@maptiler/sdk/dist/maptiler-sdk.css";
 import { Event } from "../models/Event";
@@ -13,7 +13,7 @@ export default function BasicMap({ events, map }: BasicMapProps) {
   const mapContainer = useRef(null);
   const boston = { lng: -71.08980336931096, lat: 42.34053842478537 };
   const [zoom] = useState(14);
-  maptilersdk.config.apiKey = "RBbQkhvYCQ9Y2rlfUwug";
+  maptilersdk.config.apiKey = process.env.MAP_APIKEY;
 
   useEffect(() => {
     if (!mapContainer.current || !events.length || !map) return; // Ensure map container and events are available

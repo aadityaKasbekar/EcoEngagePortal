@@ -18,8 +18,7 @@ const routes = createBrowserRouter([
     Component: App, // Main component for the root path
     children: [
       {
-        // If user is logged in, default page is LandingPage else SignIn
-        Component: (!localStorage.getItem("token")) ? SignInSide : LandingPage, // Component for the root path (index route)
+        Component: LandingPage, // Component for the root path (index route)
         index: true, // Set as index route
       },
       {
@@ -32,12 +31,12 @@ const routes = createBrowserRouter([
         Component: SignUpSide // Component for sign up page
       },
       {
-        path: '/resetPassword', // Route for password reset page
-        Component: ForgotPassword // Component for password reset page
+        path: '/changePassword',
+        Component: ForgotPassword,
       },
       {
         path: '/myProfile',  // Route for user's profile detail page
-        Component: UserProfilePage // Component for profile detail page
+        Component: (!localStorage.getItem("token")) ? SignInSide : UserProfilePage // Component for profile detail page
       },
       {
         path: '/landingPage',  // Route for user's profile detail page
@@ -49,7 +48,7 @@ const routes = createBrowserRouter([
       },
       {
         path: '/feed',  // Route for feed page
-        Component: feedPage  // Component for feed page
+        Component: (!localStorage.getItem("token")) ? SignInSide : feedPage  // Component for feed page
       },
       {
         path: '/emissions',
@@ -57,12 +56,8 @@ const routes = createBrowserRouter([
       },
       {
         path: '/registerEvents',
-        Component: RegisterEvents
-      },
-      {
-        path: '/forgotPassword',
-        Component: ForgotPassword,
-      },
+        Component: (!localStorage.getItem("token")) ? SignInSide : RegisterEvents
+      }
     ]
   }
 ]);
