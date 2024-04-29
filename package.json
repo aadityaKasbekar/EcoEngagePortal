@@ -1,0 +1,21 @@
+{
+  "name": "final-project-ecoengage-portal",
+  "version": "1.0.0",
+  "description": "Connecting communities for sustainable actions and environmental impact.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react-countup": "^6.5.3",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "react": "^16.14.0"
+  }
+}
