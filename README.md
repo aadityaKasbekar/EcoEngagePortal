@@ -21,6 +21,57 @@ Overall, the EcoEngage Portal aims to empower individuals and communities to tak
 - Ritik Gupta: [gupta.ritik@northeastern.edu](mailto:gupta.ritik@northeastern.edu)
 - Sakshi Mahesh Wadaskar: [wadaskar.s@northeastern.edu](mailto:wadaskar.s@northeastern.edu)
 
+## Technical Requirements
+
+The Ecoengage REST API is built with the following technologies:
+
+- **Node.js**: Used as the runtime environment for running JavaScript on the server-side.
+- **Express.js**: Utilized for developing the REST API endpoints, providing a robust and flexible framework for web applications.
+- **MongoDB**: Employed as the persistence layer for storing meeting note data in a NoSQL database.
+- **Mongoose**: Used as an Object Data Modeling (ODM) library for MongoDB, providing a schema-based solution to model application data.
+
+## API Endpoints
+
+### Fetch User, Event, Post, Comment
+
+- **GET /{above mentioned resources.}**: Fetches all existing resource.
+
+### Filter Event
+
+- **GET /events?keywords=&startDate=&endDate=**: Filters meeting events based on keywords in the title, content, and within a specified date range.
+
+### Add User, Event, Post, Comment
+
+- **POST /{above mentioned resources.}** : Adds a new resource.
+
+### Update User, Event, Post, Comment
+
+- **PUT /{above mentioned resources.}**: Updates an existing resource ID.
+
+### Delete User, Event, Post, Comment
+
+- **DELETE /{above mentioned resources.}**: Deletes a resource ID.
+
+## NPM Commands
+
+To run the Meeting Notes REST API, use the following npm commands:
+
+1. **Initialize Node.js project:**
+   If you haven't already, navigate to your project directory in the terminal or command prompt and initialize a Node.js project by running the following command:
+    ```
+    npm i
+    ```
+   This will create a `package.json` file in your project directory, which is used to manage dependencies.
+
+2. **Start the Server**:
+    ```
+    node run dev
+    ```
+3. **Start the Server in Development Mode with Nodemon**:
+    ```
+    npm run start
+    ```
+
 ## Mermaid code for Object Model
 
 ```mermaid
@@ -761,3 +812,58 @@ components:
           items:
             type: string
 ```
+
+# NPM libraries used:
+
+Frontend:
+
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@maptiler/sdk": "^2.0.1",
+    "@material-ui/core": "^4.12.4",
+    "@material-ui/icons": "^4.11.3",
+    "@mui/icons-material": "^5.15.15",
+    "@mui/lab": "^5.0.0-alpha.170",
+    "@mui/material": "^5.15.15",
+    "@mui/styled-engine-sc": "^6.0.0-alpha.18",
+    "@mui/styles": "^5.15.15",
+    "@mui/x-date-pickers": "^7.2.0",
+    "@mui/x-date-pickers-pro": "^7.2.0",
+    "@react-oauth/google": "^0.12.1",
+    "@reduxjs/toolkit": "^2.2.3",
+    "axios": "^1.6.8",
+    "bcrypt": "^5.1.1",
+    "dayjs": "^1.11.10",
+    "i18next": "^23.11.2",
+    "i18next-http-backend": "^2.5.1",
+    "localforage": "^1.10.0",
+    "match-sorter": "^6.3.4",
+    "react": "^18.2.0",
+    "react-countup": "^6.5.3",
+    "react-dom": "^18.2.0",
+    "react-i18next": "^14.1.0",
+    "react-material-ui-carousel": "^3.4.2",
+    "react-redux": "^9.1.1",
+    "react-router-dom": "^6.22.3",
+    "react-swipeable-views-core": "^0.14.0",
+    "sort-by": "^1.2.0",
+    "styled-components": "^6.1.8"
+
+Backend:
+
+        "@reduxjs/toolkit": "^2.2.3",
+        "bcrypt": "^5.1.1",
+        "cors": "^2.8.5",
+        "debug": "^4.3.4",
+        "dotenv": "^16.4.5",
+        "express": "^4.19.2",
+        "google-auth-library": "^9.7.0",
+        "jsonwebtoken": "^9.0.2",
+        "localforage": "^1.10.0",
+        "match-sorter": "^6.3.4",
+        "mongoose": "^8.3.1",
+        "multer": "^1.4.5-lts.1",
+        "nodemon": "^3.1.0",
+        "react-redux": "^9.1.1",
+        "react-router-dom": "^6.22.3",
+        "sort-by": "^1.2.0"
