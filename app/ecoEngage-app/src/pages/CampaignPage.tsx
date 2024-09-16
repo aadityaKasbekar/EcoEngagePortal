@@ -9,19 +9,19 @@ import { Event } from "../models/Event";
 import { getAllEvents } from "../store/event-slice";
 import "../assets/css/CampaignPage.css"; // Import the CSS file
 import LandingBar from "../components/LandingBar";
-import * as maptilersdk from "@maptiler/sdk";
+import { Map } from "@maptiler/sdk"; // Import the Map type
 
 const CampaignPage: React.FC = () => {
-  const [selectedEvent, setSelectedEvent] = useState<Event>();
-  const map = useRef(null);
+  const [_selectedEvent, setSelectedEvent] = useState<Event | undefined>();
+  const map = useRef<Map | null>(null); // Define the type for the map ref
   const eventsState = useSelector(getAllEvents());
 
   const selectEvent = (event: Event) => {
     console.log(event.title);
-    setSelectedEvent(event);
+    setSelectedEvent(event); // Update the state with the selected event
 
     // Go to the selected event's location on the map
-    if (map) {
+    if (map && map.current) {
       map.current.flyTo({
         center: [event.location.longitude, event.location.latitude],
         zoom: 14,
@@ -35,7 +35,7 @@ const CampaignPage: React.FC = () => {
         <LandingBar></LandingBar>
       </Box>
       <Box className="mapContainer">
-        <BasicMap events={eventsState} map={map} />{" "}
+        <BasicMap events={eventsState} />{" "}
       </Box>
       <Box className="cardListContainer">
         <List style={{ paddingTop: "10px" }}>

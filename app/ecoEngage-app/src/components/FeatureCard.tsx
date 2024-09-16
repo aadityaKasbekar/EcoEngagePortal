@@ -1,4 +1,4 @@
-import { Box, hexToRgb, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import React from "react";
 import ParkIcon from "@mui/icons-material/Park";
 import DynamicFeedIcon from "@mui/icons-material/DynamicFeed";

@@ -3,4 +3,4 @@ export interface Initiative {
     description: string;
     donate: string;
     link: string;
-};
+}

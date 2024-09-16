@@ -23,7 +23,7 @@ const postsAPI = 'posts';
  */
 
 export const getPosts = async (params = {}): Promise<Post[]> => {
-    return await getData(postsAPI, params);
+  return await getData(postsAPI, params);
 }
 /**
  * Updates a event in the API.
@@ -35,20 +35,20 @@ export const getPosts = async (params = {}): Promise<Post[]> => {
  */
 
 export const updatePost = async (postId: string | undefined, updatedPost: {
-    title: string;
-    content: string
+  title: string;
+  content: string
 }, token: string): Promise<Post | null> => {
-    try {
-        const response = await axios.patch<Post>(`${API_URL}/${postId}`, updatedPost, {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        });
-        return response.data;
-    } catch (error) {
-        console.error('Error updating post:');
-        throw error;
-    }
+  try {
+    const response = await axios.patch<Post>(`${API_URL}/${postId}`, updatedPost, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error updating post:');
+    throw error;
+  }
 };
 
 
@@ -62,20 +62,20 @@ export const updatePost = async (postId: string | undefined, updatedPost: {
 
 // Function to create a new post
 export async function createNewPost(postData: FormData, token: string): Promise<Post | null> {
-    try {
-        const response = await axios.post<Post>(`${API_URL}`, postData, {
-            headers: {
-                "Content-Type": "multipart/form-data",
-                "Authorization": `Bearer ${token}`,
-            },
-        });
-        console.log("Image url is:..................", response.headers);
-        console.log("post data is......." , response);
-        return response.data;
-    } catch (error) {
-        console.error("Error creating a new post:", error);
-        return null;
-    }
+  try {
+    const response = await axios.post<Post>(`${API_URL}`, postData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        "Authorization": `Bearer ${token}`,
+      },
+    });
+    console.log("Image url is:..................", response.headers);
+    console.log("post data is.......", response);
+    return response.data;
+  } catch (error) {
+    console.error("Error creating a new post:", error);
+    return null;
+  }
 }
 
 
@@ -88,19 +88,19 @@ export async function createNewPost(postData: FormData, token: string): Promise<
  * @returns {Promise<Post | null>} A promise that resolves to the deleted Post or null if an error occurs.
  */
 export const deletePost = async (postId: string, token: string): Promise<void> => {
-    try {
-        // Make a DELETE request to the API endpoint with the postId
-        // Include the Authorization header with the provided token
-        await axios.delete(`${API_URL}/${postId}`, {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        });
-        console.log(`Post with ID: ${postId} has been successfully deleted.`);
-    } catch (error) {
-        console.error('Error deleting post, you are not authorized to delete the post!', error);
-        throw error; // Re-throw the error to handle it in the calling function
-    }
+  try {
+    // Make a DELETE request to the API endpoint with the postId
+    // Include the Authorization header with the provided token
+    await axios.delete(`${API_URL}/${postId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    console.log(`Post with ID: ${postId} has been successfully deleted.`);
+  } catch (error) {
+    console.error('Error deleting post, you are not authorized to delete the post!', error);
+    throw error; // Re-throw the error to handle it in the calling function
+  }
 };
 
 
@@ -113,18 +113,18 @@ export const deletePost = async (postId: string, token: string): Promise<void> =
  * @returns {Promise<void>} A promise that resolves to the like/unlike on the Post or null if an error occurs.
  */
 
-export const toggleLikeUnlike = async (postId: string, token: string):Promise<void> => {
-    console.log('token from the service frontend.......',  token);
-    try{
-        const response = await axios.patch(`${API_URL}/${postId}/toggle-like`,{}, {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        });
-        console.log("toggle like unlike in fronendd service:.......");
-        return response.data;
-    } catch (error){
-        console.log('token from the service frontend.......',  token);
-        console.error('Error in liking/unliking post, you are not authorized.')
-    }
+export const toggleLikeUnlike = async (postId: string, token: string): Promise<void> => {
+  console.log('token from the service frontend.......', token);
+  try {
+    const response = await axios.patch(`${API_URL}/${postId}/toggle-like`, {}, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    console.log("toggle like unlike in fronendd service:.......");
+    return response.data;
+  } catch (error) {
+    console.log('token from the service frontend.......', token);
+    console.error('Error in liking/unliking post, you are not authorized.')
+  }
 }

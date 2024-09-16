@@ -35,7 +35,7 @@ const theme = createTheme({
 const ForgotPassword: React.FC = () => {
   const { t } = useTranslation("common");
 
-  const emailRef = useRef(null); // Ref for the email text field
+  const emailRef = useRef<HTMLInputElement>(null);
   const [email, setEmail] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
@@ -44,25 +44,28 @@ const ForgotPassword: React.FC = () => {
   const [showRepeatPassword, setShowRepeatPassword] = useState(false);
   const [emailFormatValid, setEmailFormatValid] = useState(false);
   const [emailPopoverMessage, setEmailPopoverMessage] = useState("");
-  const [emailPopoverAnchorEl, setEmailPopoverAnchorEl] = useState(null);
+  const [emailPopoverAnchorEl, setEmailPopoverAnchorEl] =
+    useState<HTMLElement | null>(null);
   const [passwordsMatch, setPasswordsMatch] = useState(true);
   const [passwordsPopoverMessage, setPasswordsPopoverMessage] = useState("");
   const [passwordsPopoverAnchorEl, setPasswordsPopoverAnchorEl] =
-    useState(null);
+    useState<HTMLElement | null>(null);
 
   useEffect(() => {
     // Focus the email text field when the component mounts
-    emailRef.current.focus();
+    if (emailRef.current) {
+      emailRef.current.focus();
+    }
   }, []);
 
   // Function to validate email format
-  const validateEmail = (email) => {
+  const validateEmail = (email: string): boolean => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
 
   // Handle email change
-  const handleEmailChange = (e) => {
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const newEmail = e.target.value;
     setEmail(newEmail);
     setEmailFormatValid(validateEmail(newEmail));
@@ -79,17 +82,19 @@ const ForgotPassword: React.FC = () => {
   };
 
   // Handle form submission
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (
+    e: React.FormEvent<HTMLFormElement>
+  ): Promise<void> => {
     e.preventDefault();
     if (!emailFormatValid) {
       setEmailPopoverMessage(t("erroremailFormat"));
-      setEmailPopoverAnchorEl(e.currentTarget);
+      setEmailPopoverAnchorEl(e.currentTarget as HTMLElement);
       return;
     }
     if (newPassword !== repeatPassword) {
       setPasswordsMatch(false);
       setPasswordsPopoverMessage(t("errorpasswordMismatch"));
-      setPasswordsPopoverAnchorEl(e.currentTarget);
+      setPasswordsPopoverAnchorEl(e.currentTarget as HTMLElement);
       return;
     }
 
@@ -310,13 +315,14 @@ const ForgotPassword: React.FC = () => {
               </Collapse>
               <Grid container justifyContent="flex-end">
                 <Grid item>
-                  <Link
+                  <Typography
+                    component={Link}
                     to="/"
                     variant="body2"
                     sx={{ color: theme.palette.secondary.main }}
                   >
                     {t("returntoSignin")}
-                  </Link>
+                  </Typography>
                 </Grid>
               </Grid>
             </Box>

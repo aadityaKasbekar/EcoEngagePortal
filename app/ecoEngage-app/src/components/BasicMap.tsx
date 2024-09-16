@@ -6,25 +6,25 @@ import "../assets/css/BasicMap.css";
 
 interface BasicMapProps {
   events: Event[];
-  map: maptilersdk.Map | null;
 }
 
-export default function BasicMap({ events, map }: BasicMapProps) {
-  const mapContainer = useRef(null);
+export default function BasicMap({ events }: BasicMapProps) {
+  const mapContainer = useRef<HTMLDivElement | null>(null);
+  const mapRef = useRef<maptilersdk.Map | null>(null); // Ref for the map object
   const boston = { lng: -71.08980336931096, lat: 42.34053842478537 };
   const [zoom] = useState(14);
-  maptilersdk.config.apiKey = process.env.MAP_APIKEY;
+  maptilersdk.config.apiKey = "RBbQkhvYCQ9Y2rlfUwug";
 
   useEffect(() => {
-    if (!mapContainer.current || !events.length || !map) return; // Ensure map container and events are available
+    if (!mapContainer.current || !events.length) return; // Ensure map container and events are available
 
     // Clear existing markers
-    if (map.current) {
-      map.current.remove();
+    if (mapRef.current) {
+      mapRef.current.remove();
     }
 
     // Initialize the map
-    map.current = new maptilersdk.Map({
+    mapRef.current = new maptilersdk.Map({
       container: mapContainer.current,
       style: maptilersdk.MapStyle.STREETS,
       center: [boston.lng, boston.lat],
@@ -34,7 +34,7 @@ export default function BasicMap({ events, map }: BasicMapProps) {
     // Add marker for Boston
     new maptilersdk.Marker({ color: "#FF0000" })
       .setLngLat([boston.lng, boston.lat])
-      .addTo(map.current);
+      .addTo(mapRef.current);
 
     // Add markers for each event's location
     events.forEach((plantationEvent) => {
@@ -42,9 +42,11 @@ export default function BasicMap({ events, map }: BasicMapProps) {
         lat: plantationEvent.location.latitude,
         lng: plantationEvent.location.longitude,
       };
-      new maptilersdk.Marker({ color: "#FF0000" })
-        .setLngLat([coordinates.lng, coordinates.lat])
-        .addTo(map.current);
+      if (mapRef.current) {
+        new maptilersdk.Marker({ color: "#FF0000" })
+          .setLngLat([coordinates.lng, coordinates.lat])
+          .addTo(mapRef.current);
+      }
     });
   }, [boston.lng, boston.lat, zoom, events]);
 

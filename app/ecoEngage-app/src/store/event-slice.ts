@@ -10,7 +10,7 @@ export const eventSlice = createSlice({
   name: 'events',
   initialState: initiateState,
   reducers: {
-    loadEvents: (state: EventState, action: PayloadAction<EventState>) => {
+    loadEvents: (_state: EventState | null, action: PayloadAction<EventState>) => {
       return [...action.payload];
     }
   }

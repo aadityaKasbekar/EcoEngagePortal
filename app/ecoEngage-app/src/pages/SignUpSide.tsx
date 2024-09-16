@@ -16,6 +16,15 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { AuthService } from "../services/auth-service";
 
+// Define the type for form errors
+interface FormErrors {
+  firstName?: string;
+  lastName?: string;
+  email?: string;
+  password?: string;
+  confirmPassword?: string;
+}
+
 // Custom MUI theme
 const customTheme = createTheme({
   palette: {
@@ -40,7 +49,7 @@ const SignUpSide: React.FC = () => {
   const navigate = useNavigate(); // Hook to navigate between routes
   const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
   const [showConfirmPassword, setShowConfirmPassword] = useState(false); // State to toggle confirm password visibility
-  const [errors, setErrors] = useState({}); // State to manage form validation errors
+  const [errors, setErrors] = useState<FormErrors>({}); // State to manage form validation errors
 
   // Function to handle toggling password visibility
   const handleShowPassword = (field: string) => {

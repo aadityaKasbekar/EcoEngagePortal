@@ -17,17 +17,12 @@ import { AppDispatch } from "../store";
 import "../assets/css/RegisterEvents.css";
 
 const RegisterEvents: React.FC = () => {
-  const [selectedEvent, setSelectedEvent] = useState<Event>();
   const eventsState = useSelector(getAllEvents());
   const [queryObj, setQueryObj] = useState<object>({});
   const [keywordState, setKeyword] = useState<string>("");
   const [startDateState, setStartDate] = useState<Dayjs | null>(null);
   const [endDateState, setEndDate] = useState<Dayjs | null>(null);
   const dispatch = useDispatch<AppDispatch>();
-
-  const selectEvent = (event: Event) => {
-    setSelectedEvent(event);
-  };
 
   const handleSearch = (value: string) => {
     setKeyword(value);

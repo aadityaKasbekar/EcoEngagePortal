@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Box, Typography, Select, MenuItem } from "@mui/material";
-import axios from "axios";
 import { EmissionsService, Gas } from "../services/emissions-service";
 import LandingBar from "../components/LandingBar";
 import CountUp from "react-countup";
 
 const EmissionsPage: React.FC = () => {
-  const {t} = useTranslation('common'); 
+  const { t } = useTranslation("common");
   const [selectedGas, setSelectedGas] = useState<Gas>(Gas.Methane);
   const [emissions, setEmissions] = useState<number>(4500097084.147939);
   const [selectedInterval, setSelectedInterval] = useState<string>("year");
-
-  const [isLoading, setLoading] = useState<boolean>(true);
+  const [_loading, setLoading] = useState<boolean>(true);
 
   const handleGasChange = (event: any) => {
     let gas: Gas;
@@ -121,7 +119,7 @@ const EmissionsPage: React.FC = () => {
               fontWeight: "bold",
             }}
           >
-            {t('text1')}
+            {t("text1")}
           </Typography>
           <Select
             value={selectedGas}
@@ -139,16 +137,16 @@ const EmissionsPage: React.FC = () => {
             }}
           >
             <MenuItem value="methane">
-              <Typography sx={dropDownStyle}>{t('methane')}</Typography>
+              <Typography sx={dropDownStyle}>{t("methane")}</Typography>
             </MenuItem>
             <MenuItem value="carbonmonoxide">
-              <Typography sx={dropDownStyle}>{t('carbonMonoxide')}</Typography>
+              <Typography sx={dropDownStyle}>{t("carbonMonoxide")}</Typography>
             </MenuItem>
             <MenuItem value="ozone">
-              <Typography sx={dropDownStyle}>{t('ozone')}</Typography>
+              <Typography sx={dropDownStyle}>{t("ozone")}</Typography>
             </MenuItem>
             <MenuItem value="nitrogendioxide">
-              <Typography sx={dropDownStyle}>{t('nitrogenDioxide')}</Typography>
+              <Typography sx={dropDownStyle}>{t("nitrogenDioxide")}</Typography>
             </MenuItem>
           </Select>
           <Typography
@@ -160,7 +158,7 @@ const EmissionsPage: React.FC = () => {
               fontWeight: "bold",
             }}
           >
-            {t('text2')}
+            {t("text2")}
           </Typography>
         </Box>
         <Box
@@ -188,19 +186,19 @@ const EmissionsPage: React.FC = () => {
             }}
           >
             <MenuItem value="year">
-              <Typography sx={dropDownStyle}>{t('year')}</Typography>
+              <Typography sx={dropDownStyle}>{t("year")}</Typography>
             </MenuItem>
             <MenuItem value="month">
               {" "}
-              <Typography sx={dropDownStyle}>{t('month')}</Typography>
+              <Typography sx={dropDownStyle}>{t("month")}</Typography>
             </MenuItem>
             <MenuItem value="week">
               {" "}
-              <Typography sx={dropDownStyle}>{t('week')}</Typography>
+              <Typography sx={dropDownStyle}>{t("week")}</Typography>
             </MenuItem>
             <MenuItem value="day">
               {" "}
-              <Typography sx={dropDownStyle}>{t('day')}</Typography>
+              <Typography sx={dropDownStyle}>{t("day")}</Typography>
             </MenuItem>
           </Select>
         </Box>

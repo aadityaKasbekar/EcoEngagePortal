@@ -35,16 +35,14 @@ const UserProfilePage: React.FC = () => {
   const { t } = useTranslation("common");
   const dispatch = useDispatch();
   const user = useFetchUser();
-
   const [firstName, setFirstName] = useState(user?.firstName || "");
   const [lastName, setLastName] = useState(user?.lastName || "");
   const [bio, setBio] = useState(user?.bio || "");
   const [email, setEmail] = useState(user?.email || "");
-
   const [events, setEvents] = useState<CustomEvent[]>([]);
-
   const [showEvents, setShowEvents] = useState(false);
   const handleClose = () => setShowEvents(false);
+  const navigate = useNavigate();
 
   console.log(user);
   // Define the theme
@@ -53,8 +51,6 @@ const UserProfilePage: React.FC = () => {
     { value: "es", label: t("spanish") },
     { value: "hi", label: t("hindi") },
   ];
-
-  const navigate = useNavigate();
 
   useEffect(() => {
     setFirstName(user?.firstName || "");
@@ -281,54 +277,6 @@ const UserProfilePage: React.FC = () => {
                   },
                 }}
               />
-              {/* <TextField
-                fullWidth
-                label="Password"
-                type={passwordVisible ? "text" : "password"}
-                defaultValue="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <IconButton
-                        onClick={togglePasswordVisibility}
-                        sx={{ color: environmentalTheme.palette.primary.main }}
-                      >
-                        {passwordVisible ? <VisibilityOff /> : <Visibility />}
-                      </IconButton>
-                    </InputAdornment>
-                  ),
-                }}
-                sx={{
-                  my: 1,
-                  "& .MuiInputBase-input": {
-                    color: environmentalTheme.palette.text.primary,
-                  },
-                  "& .MuiOutlinedInput-root": {
-                    "& fieldset": {
-                      borderColor: environmentalTheme.palette.secondary.main,
-                    },
-                    "&:hover fieldset": {
-                      borderColor: environmentalTheme.palette.primary.main,
-                    },
-                    "&.Mui-focused fieldset": {
-                      borderColor: environmentalTheme.palette.primary.main,
-                    },
-                  },
-                }}
-              /> */}
-              {/* <Button
-                variant="outlined"
-                sx={{
-                  mt: 2,
-                  mb: 3,
-                  color: environmentalTheme.palette.primary.main,
-                }}
-              >
-                {t("changepassword")}
-              </Button> */}
-              {/* ... */}
               <TextField
                 select
                 fullWidth
@@ -377,7 +325,7 @@ const UserProfilePage: React.FC = () => {
           </Grid>
         </Paper>
       </Container>
-      <Modal open={showEvents} onClose={() => setShowEvents(false)}>
+      <Modal open={showEvents} onClose={handleClose}>
         <Box
           sx={{
             position: "absolute",

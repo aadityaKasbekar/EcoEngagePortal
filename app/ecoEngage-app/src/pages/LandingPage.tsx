@@ -5,7 +5,6 @@ import React, { useEffect } from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 import CssBaseline from "@mui/material/CssBaseline";
-// import Container from '@mui/material/Container';
 import LandingCard from "../components/LandingCard";
 import LandingBar from "../components/LandingBar";
 import FeatureCardRow from "../components/FeatureCardsRow";

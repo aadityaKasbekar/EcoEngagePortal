@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Paper from "@mui/material/Paper";
-import Typography from "@mui/material/Typography";
 import Carousel from "react-material-ui-carousel";
-import Button from "@mui/material/Button";
 import { Event } from "../models/Event";
 import "../assets/css/EventComponent.css";
 import { Alert, Box, Snackbar } from "@mui/material";
