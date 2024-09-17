@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js",
     "build": "npm run minify",
-    "minify": "mkdir -p dist && uglifyjs server.js -o dist/server.min.js --compress --mangle"
+    "minify": "mkdir -p public && uglifyjs server.js -o public/server.min.js --compress --mangle"
   },
   "author": "",
   "license": "ISC",
