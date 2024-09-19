@@ -1,4 +1,4 @@
-import Event from './../model/event.js'
+import Event from '../model/event.js'
 
 /**
   * Retrieves events from the database based on provided filters.

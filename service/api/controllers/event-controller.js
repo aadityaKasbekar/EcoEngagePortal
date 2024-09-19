@@ -1,4 +1,4 @@
-import { setResponse, setError } from '../controllers/response-handler.js'
+import { setResponse, setError } from './response-handler.js'
 import * as eventsService from '../services/events-service.js'
 
 /**

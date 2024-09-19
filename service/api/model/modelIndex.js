@@ -1,6 +1,6 @@
 /**
  * Module for exporting models.
- * @module models/index
+ * @module models/modelIndex
  */
 import CommentCreation from "./comment.js";
 import postCreation from "./comment.js";
