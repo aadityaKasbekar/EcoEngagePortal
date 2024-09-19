@@ -5,10 +5,6 @@ import postRouter from "./post-routes.js";
 import initiativesRouter from './initiative-routes.js';
 
 const initRoutes = (app) => {
-  // Default route for root path
-  app.get('/', (req, res) => {
-    res.send('Welcome to the EcoEngage API!');
-  });
   // Route logging for debugging
   app.use('/auth', authRouter);
   app.use('/comments', commentCreationRouter);
