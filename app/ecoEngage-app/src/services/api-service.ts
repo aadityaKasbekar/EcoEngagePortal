@@ -1,14 +1,16 @@
+import dotenv from 'dotenv';
 /**
   * Module for interacting with a RESTful API.
   * @module ApiService
 */
 
+dotenv.config();
 /**
   * Base URL of the server.
   * @constant
   * @type {string}
 */
-const serverURL = 'http://localhost:5001';
+const serverURL = process.env.BACKEND_SERVER_URL;
 
 /**
   * Fetches data from the API.
