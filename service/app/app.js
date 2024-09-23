@@ -11,13 +11,19 @@ const connectToDatabase = async (mongoURI) => {
     console.log('Successfully connected to MongoDB using Mongoose!');
   } catch (err) {
     console.error('Failed to connect to MongoDB:', err.message);
-    process.exit(1)
+    // process.exit(1); // Commented out to prevent app crash
   }
 };
 
 const init = (app) => {
   // Middleware setup
-  app.use(cors());
+  const allowedOrigins = process.env.FRONTEND_SERVER_URL;
+
+  app.use(cors({
+    origin: allowedOrigins,
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true, // Allow credentials (like cookies) to be sent
+  }));
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
   app.use('/uploads', express.static('uploads'));
