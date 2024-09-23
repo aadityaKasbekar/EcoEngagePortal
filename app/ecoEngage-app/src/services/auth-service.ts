@@ -1,6 +1,6 @@
 import { User } from "../models/User";
 
-export const BASE_URL = "http://localhost:5001";
+export const serverURL = import.meta.env.VITE_BACKEND_SERVER_URL;
 // This file contains the implementation of the AuthService module.
 // It provides functions for user authentication and user data management.
 
@@ -15,7 +15,7 @@ export const AuthService = {
   // Returns: The access token for the signed up user.
   async signUp(firstName: String, lastName: String, email: String, password: String) {
     try {
-      const response = await fetch(`${BASE_URL}/auth/signup/`, {
+      const response = await fetch(`${serverURL}/auth/signup/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -37,7 +37,7 @@ export const AuthService = {
   // Returns: The access token for the signed in user.
   async signIn(email: String, password: String) {
     try {
-      const response = await fetch(`${BASE_URL}/auth/signin/`, {
+      const response = await fetch(`${serverURL}/auth/signin/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -60,7 +60,7 @@ export const AuthService = {
       if (!accessToken) {
         throw new Error("Access token not found in localStorage");
       }
-      const response = await fetch(`${BASE_URL}/auth/user`, {
+      const response = await fetch(`${serverURL}/auth/user`, {
         method: "GET",
         headers: {
           "Authorization": `Bearer ${accessToken}`,
@@ -84,7 +84,7 @@ export const AuthService = {
       if (!accessToken) {
         throw new Error("Access token not found in localStorage");
       }
-      const response = await fetch(`${BASE_URL}/auth/user`, {
+      const response = await fetch(`${serverURL}/auth/user`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -107,7 +107,7 @@ export const AuthService = {
   // Returns: The response data.
   async changePassword(email: string, password: string) {
     try {
-      const response = await fetch(`${BASE_URL}/auth/forgotPassword/`, {
+      const response = await fetch(`${serverURL}/auth/forgotPassword/`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

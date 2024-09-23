@@ -2,7 +2,7 @@ import axios from "axios";
 import { Comment } from '../models/Comment';
 import { getData } from "./api-service.ts";
 
-const API_URL = 'http://localhost:5001/comments';
+const API_URL = import.meta.env.VITE_BACKEND_SERVER_URL;
 const commentsAPI = 'comments';
 
 // Retrieves the authorization token

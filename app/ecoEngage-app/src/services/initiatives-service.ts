@@ -1,9 +1,9 @@
-import { BASE_URL } from "./auth-service"
+import { serverURL } from "./auth-service"
 
 export const InitiativeService = {
   async getInitiatives() {
     try {
-      const response = await fetch(`${BASE_URL}/initiatives`, {
+      const response = await fetch(`${serverURL}/initiatives`, {
         method: 'GET',
       });
 
