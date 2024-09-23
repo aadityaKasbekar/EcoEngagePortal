@@ -12,7 +12,6 @@ init(app);
 app.get("/", (req, res) => res.send("Express on Vercel"));
 
 app.listen(port, (req, res, next) => {
-  app.use(cors());
   console.log(`server running at port ${port}`);
 });
 
