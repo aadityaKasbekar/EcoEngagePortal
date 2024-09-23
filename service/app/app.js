@@ -20,8 +20,7 @@ const init = (app) => {
   const allowedOrigins = process.env.FRONTEND_SERVER_URL;
 
   app.use(cors({
-    origin: allowedOrigins,
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    origin: '*',
     credentials: true, // Allow credentials (like cookies) to be sent
   }));
   app.use(express.json());
