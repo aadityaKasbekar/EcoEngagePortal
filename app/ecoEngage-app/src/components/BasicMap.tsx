@@ -13,7 +13,8 @@ export default function BasicMap({ events }: BasicMapProps) {
   const mapRef = useRef<maptilersdk.Map | null>(null); // Ref for the map object
   const boston = { lng: -71.08980336931096, lat: 42.34053842478537 };
   const [zoom] = useState(14);
-  maptilersdk.config.apiKey = "RBbQkhvYCQ9Y2rlfUwug";
+  const mapAPIKey = import.meta.env.VITE_MAP_APIKEY;
+  maptilersdk.config.apiKey = mapAPIKey;
 
   useEffect(() => {
     if (!mapContainer.current || !events.length) return; // Ensure map container and events are available
